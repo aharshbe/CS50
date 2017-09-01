@@ -1,0 +1,5 @@
+Debugging:
+
+- Pass 'help50' error output for advice help if need be.
+- Trying looking at the first line of a program first to see the error
+- You can use cs50 function 'eprintf()' to provide error context to help with error handeling
