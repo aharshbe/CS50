@@ -3,3 +3,39 @@ Debugging:
 - Pass 'help50' error output for advice help if need be.
 - Trying looking at the first line of a program first to see the error
 - You can use cs50 function 'eprintf()' to provide error context to help with error handeling
+- 'debug50' allows access to a graphics debugger built into the cs50.h file
+
+Crptography:
+
+- The art of sending secret/cryptic messages that can only be decyphered with some key ingredient that the sender has as well
+- Secret-key crepyography: have a secret key that allows them to both encrypt and decrypt a message
+- Plainttext is considered the input message
+- Ciphertext is the ciphered text
+- To decrpyt an encrpted message you just reverse the process by which was done in order to create the message to begin with
+
+
+C functions:
+
+- strlen({input value}) is used in C to determine the length of an argument and returns an int value
+- you need to #inclide<string.h>
+- In some cases, the return value of a given function won't be what you were expecting due to a number of reasons, the most common being running out of memeory, in that case, the function will return null. It's important when programming to consider this possibilty and to do so in your code. Here's an example of how to do that: 
+
+	Example: if (s != NULL){}
+
+- Typecasting: Either implicitly or explicitly allows you to convert from one data type to another.
+		
+	Example: printf("%c is %i\n", (char) i , i);
+
+- toupper(): returns the uppercase variant of a char though to do this you need to include the file 'ctype.h'
+
+- https://reference.cs50.net/: for 'man' page type information
+
+- '\0' is c's way of denoting the end of a string, basically how you 'NULL' terminate a string value or string of char values
+
+
+In-line arugements for main: 
+
+- The main method in c can take in two arugements, an int and an array
+
+- **Fun tid-bit: 'Foo bar baz' are the three default words a comp sci person uses when the need words
+
