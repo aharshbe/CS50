@@ -39,3 +39,216 @@ In-line arugements for main:
 
 - **Fun tid-bit: 'Foo bar baz' are the three default words a comp sci person uses when the need words
 
+Functions:
+
+- Aka, methods, procedures, subroutines
+
+- A 'black box with a set of 0 or more inputs and 1 output
+ 
+
+Example: 
+        add(a, b, c){
+            return value;
+            }
+        where a = 3, b = 6 and c = 7
+
+- Should always be clear and well documents though they can really be implemented in any way the programmer sees fit
+
+- Functions allow us the ability to organize a code base & simplify a coding process (for debugging)
+
+- Functions can be easily recycled 
+
+    Steps to create a function:
+        
+1.  Declare a function, telling the compiler you're going to make a funtion and here's what it will look like.
+
+2. You usually want to put them at the top of your form. 
+
+3. There are 3 parts to most function declarations, return-type, name(argument-list);
+        - Return-type: what kind of variable the function will output e.g., int, String, char ...
+        - A name: self-explanitory (what you want to call it)
+        - Arguement-list: comma-seperated list of all the arugements that will be containted within the body of your function, each of which has a type(s) and a name
+        Example: Function that adds two integers together
+            
+            int add_two_ints(int a, int b);
+
+        Example: Function that multiplys two floating point numbers
+    
+            float mult_two_floats(float a, float b);
+
+4. Defining a function:
+        1. The beginning of a function declaration and a function definition are almost exactly the same
+        
+        Example: Add two ints 
+
+        int add_two_ints(int a, int b);
+
+
+        int add_two_ints(int a, int b)
+        {
+            return a + b;
+        }
+
+        or
+
+        int add_two_ints(int a, int b)
+        {
+            int c = a + b;
+            return c;
+        }
+
+5. Calling/Using a function: 
+        - Just pass it the appropriate arguments (the data types) 
+        - Assign the return function to something of the correct type
+        
+
+Misc on functions:
+
+- functions can sometimes take no data-type, in that case, just delcar the function as being 'void'
+
+- If there is not output for a given function you can either return 'void' or 0
+
+Pracice problem:
+
+Write a function called 'valid_triangle' that takes in 3 real numbers that represent the lengths of the 3 sides of a trianglge as it's parameters. This function should either output true or false depending on wether those three lengths are capable of making a triangle.
+
+Rules: 
+
+    - A triangle may only have sides with a positive length
+    - The sum of the lengths of any two sides of the trianlge must be greater than the length of the third side
+
+
+Varibales and Scope: 
+
+- Scope is a characteristic of a varibale that defines from which functions tht variable may be accessed.
+
+ 1. There are two primary scopes in C:
+
+        - Local variables: can only be accessed within the functions in which there are created
+            
+                1. To define a local varibale you would do so as you normally do in a given function
+        
+        - Global variables: can be accessed by any function in the program 
+
+               1. To define a global varibale do so as you normally would but place it after the #include statements
+
+- When using global variables it's important to note that varibale are copied/passed from one function to another. In order to change the global varaible when it's receieved you must re-delcare it. So it you've defined the varibale as being 0 and you want to alter it in x method then you need to restore it in x method if you want to use it in b method 
+
+Arrays
+
+- A fundamental data structure which consists of a number of values of the same data type at contiguous locations in memory.
+
+- Arrays are paritioned into blocks of space alloted for each value known as an element
+
+- You can access each element in an array via its index number
+
+- In C and most programming languages the elements of an array start with an index of 0
+
+- If the first element in an array (with n elements) is located at position 0 then the last element in an array is located at n-1. 
+
+- 'A segmentation fault' is when you start to access memeory that is outside the bounds of what you asked your program to give you, an example of this would be accessing an element in an array that doesn't exist.
+
+Declaring an array in C:
+
+            type name[size];
+
+            Example:
+
+            int mailbox_numbers[200]
+
+- Even though the elements in an array start at 0, delcaring the array does, so you need to start at 1 in order for it to compile correctly.
+
+- For smaller arrays, it's much easier to declare and intialize the array in the same line also known as instantiating the array
+
+        Example:
+
+        int mailbox_numbers[5] = {223, 3456, 3456, 2335, 5654};
+
+- When you are instantiating an array you don't need to indicate the size beforehand
+
+- Arrrays are not restricted to being in a single dimensation
+    
+    Example of a 10x10 grid: bool battleship[10][10]
+
+- The above array is actually the same as declaring an array of 100 elements but by indicating the array as above it helps greatly with organization/human percetion; an abstraction
+
+- Each individual element of an array can be treated as a variable, however, one can't treat an entire array as a varibale
+    
+        Example: You can't assign one array to another using the assignment operator, if you wanted to do that, you would say, copy the array instead. When copying an array, you actually need to loop over each element in the array individually.
+
+
+- Instead of passing an array by value in the case of a global variable to another function, you pass arrays by refecence to their index
+
+Command Line Arguements:
+
+- Accepting arguements from the user that are directly entered into the main method at run-time
+
+        Example of this:
+
+        int main(int argc, string argv[]){}
+
+- argc stands for arugment count and can actually be called whatever you want 
+
+- argv stands for argument vector (also known as an array) and can just the same be called whatever you want
+
+- argc counts all arguements passed into the command line at runtime including the name of the program itself.
+
+           Example:        
+    
+        './greedy' would have an argc count of 1
+
+        './greedy 23 2355' would have an argc count of 3
+
+- The last element in an argv array can be found at argv[argc-1]
+
+- Everything stored in argv is a string, so if an int is entered as an argument, the string equivalent is stored, not that actual int value
+
+- To find a function that will convert a string value in argv to an int value, checkout the reference 50 website (https://reference.cs50.net/)
+
+Magic Numbers:
+
+- Given number a little more context/form by defining them instead of using them.   
+
+    Example a deck of cards, if you're making a function that iterates of an array of cards you might try defining that number to provide context instead of just using it:
+
+            int deck_number_of_cards = 52
+
+            for (int i = 0; i < deck_number_of_cards; i++){}
+
+
+- C provides a preprocessor directive (also called a macro) for creating symbolic contants.
+
+       #define NAME REPLACEMENT
+
+- What above does it is replaces every instance of the given name with the replacement name or every instnce of a name with a given number
+
+        Example:
+        #define austin Austin
+        #define x y
+        #define PI 3.14159265
+        #define squash 10
+        #define COURSE "CS50"
+
+- #define(s) do not need to be declared as their specific variable type, it's literally a macro for find and replace which is super cool
+
+- It's conventional to use all capitalized text when using #define(s)
+
+- #define(s) are basically treated as variables
+        
+        Example: 
+        #define DECKSIZE 52
+        printf("%i\n", DECKSIZE + 1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
